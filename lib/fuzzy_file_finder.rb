@@ -221,7 +221,7 @@ class FuzzyFileFinder
 
         full = File.join(directory.name, entry)
 
-        if File.directory?(full)
+        if File.directory?(full) && File.readable?(full)
           follow_tree(Directory.new(full))
         elsif !ignore?(full.sub(@shared_prefix_re, ""))
           files.push(FileSystemEntry.new(directory, entry))
